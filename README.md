@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FillsLog (필스로그)
 
-## Getting Started
+## 배경
 
-First, run the development server:
+교회에 여러 드러머가 존재, 서로의 인사이트를 나누는데 한계가 있음. 그래서 서로 적용해본 필인을 기록으로 남겨 성장에 도모하기 위함
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 페인 포인트
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 🎯 문제 1:
+  “배운 필인을 어디에, 어떻게 써야 할지 모른다.” 유튜브, 인스타에선 멋진 필인을 보여주지만 “이걸 언제 써야 해?”, “곡에 어떻게 넣지?” 같은 실전 맥락은 거의 없다
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 🎯 문제 2:
+  “연습해도 정리되지 않고, 실력이 쌓인다는 느낌이 없다.” 그냥 영상 보고 따라만 치다 끝, 자신만의 스타일/레퍼토리/필인 아카이브가 없음
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🎯 문제 3:
+  “피드백을 받을 곳도, 공유할 곳도 없다.” 교회 드러머, 비전공자는 특히 더 외로움, 커뮤니티도 없고, 실전 기반 피드백은 더더욱 없음
 
-## Learn More
+✅ 그래서 이 플랫폼은:
+내가 배운 필인을 텍스트/영상으로 저장하고 실제 곡/예배/연습에서 적용해본 경험을 기록하며 필요하면 피드백까지 받을 수 있는 **드럼 성장 로그**
 
-To learn more about Next.js, take a look at the following resources:
+## 한 줄 정리
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+“비전공 드러머들이 배운 필인을 정리하고, 실제로 적용해본 경험을 기록하며 스스로 성장할 수 있는 공간을 제공한다.”
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 기술 스택
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 서버와 클라이언트 : Next.js
+- 애니메이션 : Framer
+- DB : supabase
+- 디자인 시스템 : HeroUI (https://github.com/heroui-inc/heroui)
+- 배포 : Vercel
