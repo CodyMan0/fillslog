@@ -10,6 +10,18 @@ export default function Home() {
         videoUrl="https://youtube.com"
         description="느린 발라드에서 리드인용으로 사용"
       />
+      <FillCard
+        title="4연음 트릴"
+        bpm={70}
+        videoUrl="https://youtube.com"
+        description="느린 발라드에서 리드인용으로 사용"
+      />
+      <FillCard
+        title="4연음 트릴"
+        bpm={70}
+        videoUrl="https://youtube.com"
+        description="느린 발라드에서 리드인용으로 사용"
+      />
     </div>
   );
 }
