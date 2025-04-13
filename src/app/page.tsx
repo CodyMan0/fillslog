@@ -1,4 +1,4 @@
-import FillCard from "./components/FillCard";
+import { FillCard } from "@/features/fills";
 
 export default function Home() {
   return (

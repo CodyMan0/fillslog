@@ -5,12 +5,7 @@ interface FillCardProps {
   description?: string;
 }
 
-export default function FillCard({
-  title,
-  bpm,
-  videoUrl,
-  description,
-}: FillCardProps) {
+export function FillCard({ title, bpm, videoUrl, description }: FillCardProps) {
   return (
     <div className="bg--card rounded-xl p-4 shadow-md">
       <h2 className="text-lg font-semibold">{title}</h2>
