@@ -5,8 +5,8 @@ import Link from "next/link";
 import { UserIcon, DrumIcon, NetworkIcon } from "lucide-react";
 
 const navItems = [
-  { href: "/", label: "내 필인", icon: <DrumIcon size={20} /> },
-  { href: "/achive", label: "필인 지도", icon: <DrumIcon size={20} /> },
+  { href: "/fills", label: "내 필인", icon: <DrumIcon size={20} /> },
+  { href: "/map", label: "필인 지도", icon: <DrumIcon size={20} /> },
   { href: "/grow", label: "성장 로그", icon: <NetworkIcon size={20} /> },
   { href: "/my", label: "마이페이지", icon: <UserIcon size={20} /> },
 ];
