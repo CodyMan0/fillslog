@@ -22,8 +22,8 @@ export default function BottomNav() {
           <Link
             key={item.href}
             href={item.href}
-            className={`flex-1 flex flex-col items-center gap-1 ${
-              isActive ? "text-accent-blue" : "text-zinc-400"
+            className={` flex-1 flex flex-col items-center gap-1 ${
+              isActive ? "text-accent-blue " : "text-zinc-400"
             }`}
           >
             {item.icon}
