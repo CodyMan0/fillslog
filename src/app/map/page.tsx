@@ -1,11 +1,14 @@
+import PageLayout from "@/features/layouts/PageLayout";
 import BottomNav from "../components/MobileNav";
 
 const page = () => {
   return (
-    <div>
-      fills map
-      <BottomNav />
-    </div>
+    <PageLayout>
+      <div>
+        fills map
+        <BottomNav />
+      </div>
+    </PageLayout>
   );
 };
 
