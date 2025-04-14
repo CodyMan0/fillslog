@@ -2,8 +2,8 @@ import Image from "next/image";
 import Drum from "@/shared/assets/images/drum.png";
 export default function Home() {
   return (
-    <div>
-      <h1>Fills log</h1>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1 className="text-3xl">Fills log</h1>
       <Image src={Drum} alt="hero_drum" />
     </div>
   );
