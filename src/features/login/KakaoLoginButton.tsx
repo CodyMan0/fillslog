@@ -1,14 +1,24 @@
 "use client";
 
-import Link from "next/link";
+import { createClient } from "@/shared/utils/supabase/client";
 
 const KakaoLoginButton = () => {
+  const signInWithKakao = async () => {
+    const supabase = await createClient();
+
+    await supabase.auth.signInWithOAuth({
+      provider: "kakao",
+      options: { redirectTo: `${window.location.origin}/auth/callback` },
+    });
+  };
+
   return (
-    <Link href={"/fills"} className="w-[80%]">
-      <button className="w-full h-14 rounded-lg bg-kakao px-[14px] text-black font-bold">
-        카카오로 시작하기
-      </button>
-    </Link>
+    <button
+      className="w-[80%] h-14 rounded-lg bg-kakao px-[14px] text-black font-bold"
+      onClick={signInWithKakao}
+    >
+      카카오로 시작하기
+    </button>
   );
 };
 

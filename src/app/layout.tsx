@@ -4,6 +4,7 @@ import "./globals.css";
 
 import MobileContainer from "./components/MobileContainer";
 import { pretendard } from "./fonts";
+import { Provider } from "./components/Provider";
 
 export const metadata: Metadata = {
   title: "Fills Log",
@@ -20,7 +21,9 @@ export default function RootLayout({
       <body
         className={`${pretendard.variable} ${pretendard.variable} antialiased`}
       >
-        <MobileContainer>{children}</MobileContainer>
+        <Provider session={null}>
+          <MobileContainer>{children}</MobileContainer>
+        </Provider>
       </body>
     </html>
   );
