@@ -6,7 +6,7 @@ import { Button } from "@/shared/ui";
 const page = () => {
   return (
     <PageLayout>
-      <div className="space-y-4">
+      <div>
         <h1 className="text-xl font-bold">나의 필인 기록</h1>
         <FillCard
           title="4연음 트릴"
@@ -26,7 +26,10 @@ const page = () => {
           videoUrl="https://youtube.com"
           description="느린 발라드에서 리드인용으로 사용"
         />
-        <Button>추가</Button>
+        <Button className="bg-white rounded-full text-black hover:scale-110">
+          필인 줍줍
+        </Button>
+
         <BottomNav />
       </div>
     </PageLayout>
