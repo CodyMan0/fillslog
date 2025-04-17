@@ -1,15 +1,12 @@
 "use client";
 
-const KakaoLoginButton = () => {
-  const signInWithKakao = async (next = "/") =>
-    await fetch(`/api/auth/kakao?next=${encodeURIComponent(next)}`).then(
-      (res) => res.json()
-    );
+import { signIn } from "next-auth/react";
 
+const KakaoLoginButton = () => {
   return (
     <button
       className="w-[80%] h-14 rounded-lg bg-kakao px-[14px] text-black font-bold"
-      onClick={() => signInWithKakao()}
+      onClick={() => signIn("kakao")}
     >
       카카오로 시작하기
     </button>

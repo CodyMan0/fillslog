@@ -3,6 +3,7 @@ import { createClient } from "@/shared/utils/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function updateSession(request: NextRequest) {
+  console.log("request", request);
   const supabaseResponse = NextResponse.next({
     request,
   });
