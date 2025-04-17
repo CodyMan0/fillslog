@@ -1,6 +1,7 @@
 import { FillCard } from "@/features/fills";
 import BottomNav from "../components/MobileNav";
 import PageLayout from "@/features/layouts/PageLayout";
+import { Button } from "@/shared/ui";
 
 const page = () => {
   return (
@@ -25,6 +26,7 @@ const page = () => {
           videoUrl="https://youtube.com"
           description="느린 발라드에서 리드인용으로 사용"
         />
+        <Button>추가</Button>
         <BottomNav />
       </div>
     </PageLayout>
