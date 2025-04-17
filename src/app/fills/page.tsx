@@ -1,45 +1,78 @@
-import { FillCard } from "@/features/fills";
 import BottomNav from "../components/MobileNav";
 import PageLayout from "@/features/layouts/PageLayout";
-import { Button } from "@/shared/ui";
+
+import { FlaskConical, LucideIcon, Music, Rocket, Zap } from "lucide-react";
 import Link from "next/link";
 
+const categories: {
+  name: string;
+  slug: string;
+  color: string;
+  icon: LucideIcon;
+  count: number;
+}[] = [
+  {
+    name: "16분음표 Fill",
+    slug: "16th",
+    color: "bg-green-500",
+    icon: Music,
+    count: 0,
+  },
+  {
+    name: "32분음표 Fill",
+    slug: "32nd",
+    color: "bg-yellow-400",
+    icon: Zap,
+    count: 0,
+  },
+  {
+    name: "8분음표 Fill",
+    slug: "8th",
+    color: "bg-blue-500",
+    icon: Zap,
+    count: 0,
+  },
+  {
+    name: "3연음 Fill",
+    slug: "triplet",
+    color: "bg-purple-500",
+    icon: Zap,
+    count: 0,
+  },
+  {
+    name: "6연음 Fill",
+    slug: "sixtuplet",
+    color: "bg-red-500",
+    icon: Rocket,
+    count: 0,
+  },
+  {
+    name: "Hybrid Fill",
+    slug: "hybrid",
+    color: "bg-gray-700",
+    icon: FlaskConical,
+    count: 0,
+  },
+];
 const page = () => {
   return (
     <PageLayout>
       <div>
-        <h1 className="text-xl font-bold">나의 필인 기록</h1>
-        <Button
-          className="w-full bg-white rounded-full text-black hover:scale-105 transition-all duration-200 ease-in-out mt-4"
-          asChild
-        >
-          <Link href="/fills/add">필인 줍줍</Link>
-        </Button>
-        <FillCard
-          title="4연음 트릴"
-          bpm={140}
-          videoUrl="https://youtube.com"
-          description="느린 발라드에서 리드인용으로 사용"
-        />
-        <FillCard
-          title="4연음 트릴"
-          bpm={90}
-          videoUrl="https://youtube.com"
-          description="느린 발라드에서 리드인용으로 사용"
-        />
-        <FillCard
-          title="4연음 트릴"
-          bpm={90}
-          videoUrl="https://youtube.com"
-          description="느린 발라드에서 리드인용으로 사용"
-        />
-        <FillCard
-          title="4연음 트릴"
-          bpm={90}
-          videoUrl="https://youtube.com"
-          description="느린 발라드에서 리드인용으로 사용"
-        />
-
+        <div className="grid grid-cols-2 gap-4 p-4 max-w-[430px] mx-auto">
+          {categories.map((cat) => (
+            <Link
+              key={cat.slug}
+              href={`/fills/${cat.slug}`}
+              className={`aspect-square flex flex-col items-center justify-center rounded-lg text-white text-lg font-semibold shadow-md ${cat.color} hover:opacity-90 transition relative`}
+            >
+              <cat.icon className="w-8 h-8 mb-2" />
+              {cat.name}
+              <div className="absolute bottom-2 right-2 bg-white text-black text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow">
+                {cat.count}
+              </div>
+            </Link>
+          ))}
+        </div>
         <BottomNav />
       </div>
     </PageLayout>
