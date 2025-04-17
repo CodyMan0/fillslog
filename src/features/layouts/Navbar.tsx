@@ -30,7 +30,7 @@ const Navbar = () => {
           </Button>
         </div>
       ) : (
-        <Button onClick={() => signIn({ callbackUrl: "/" })}>sign in</Button>
+        <Button onClick={() => signIn()}>sign in</Button>
       )}
     </div>
   );

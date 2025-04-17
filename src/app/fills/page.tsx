@@ -10,19 +10,16 @@ const page = () => {
         <FillCard
           title="4연음 트릴"
           bpm={140}
-          videoUrl="https://youtube.com"
           description="느린 발라드에서 리드인용으로 사용"
         />
         <FillCard
           title="4연음 트릴"
           bpm={80}
-          videoUrl="https://youtube.com"
           description="느린 발라드에서 리드인용으로 사용"
         />
         <FillCard
           title="4연음 트릴"
           bpm={90}
-          videoUrl="https://youtube.com"
           description="느린 발라드에서 리드인용으로 사용"
         />
         <BottomNav />
