@@ -14,11 +14,13 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.KAKAO_CLIENT_SECRET!,
     }),
   ],
+  session: {
+    strategy: "jwt",
+  },
   callbacks: {
     async session({ session }) {
       return session;
     },
   },
-
   secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,
 };
