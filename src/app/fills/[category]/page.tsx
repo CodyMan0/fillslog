@@ -1,6 +1,7 @@
 import BottomNav from "@/app/components/MobileNav";
 import { FillCard } from "@/features/fills";
 import FillFab from "@/features/fills/FloatingFillButton";
+import Header from "@/features/layouts/Header";
 import PageLayout from "@/features/layouts/PageLayout";
 
 import React from "react";
@@ -8,6 +9,9 @@ import React from "react";
 const Page = () => {
   return (
     <PageLayout>
+      <Header>
+        <Header.Previous />
+      </Header>
       <div>
         <FillCard
           title="4연음 트릴"

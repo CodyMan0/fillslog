@@ -1,3 +1,4 @@
+import Header from "@/features/layouts/Header";
 import BottomNav from "../components/MobileNav";
 import PageLayout from "@/features/layouts/PageLayout";
 
@@ -57,6 +58,9 @@ const categories: {
 const page = () => {
   return (
     <PageLayout>
+      <Header>
+        <Header.Text text="Fills log" />
+      </Header>
       <div>
         <div className="grid grid-cols-2 gap-4 p-4 max-w-[430px] mx-auto">
           {categories.map((cat) => (
