@@ -1,5 +1,5 @@
 import PageLayout from "@/features/layouts/PageLayout";
-import BottomNav from "../components/MobileNav";
+
 import ComingSoon from "../components/ComingSoon";
 
 const page = () => {
@@ -7,7 +7,6 @@ const page = () => {
     <PageLayout>
       <div>
         <ComingSoon />
-        <BottomNav />
       </div>
     </PageLayout>
   );

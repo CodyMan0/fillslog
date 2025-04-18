@@ -1,5 +1,5 @@
 import Header from "@/features/layouts/Header";
-import BottomNav from "../components/MobileNav";
+
 import PageLayout from "@/features/layouts/PageLayout";
 
 import { FlaskConical, LucideIcon, Music, Rocket, Zap } from "lucide-react";
@@ -77,7 +77,6 @@ const page = () => {
             </Link>
           ))}
         </div>
-        <BottomNav />
       </div>
     </PageLayout>
   );

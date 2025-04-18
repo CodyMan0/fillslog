@@ -1,4 +1,3 @@
-import BottomNav from "@/app/components/MobileNav";
 import { FillCard } from "@/features/fills";
 import FillFab from "@/features/fills/FloatingFillButton";
 import Header from "@/features/layouts/Header";
@@ -42,7 +41,6 @@ const Page = () => {
         )}
 
         <FillFab />
-        <BottomNav />
       </div>
     </PageLayout>
   );

@@ -1,5 +1,4 @@
 import PageLayout from "@/features/layouts/PageLayout";
-import BottomNav from "../components/MobileNav";
 
 import Header from "@/features/layouts/Header";
 import Profile from "./components/Profile";
@@ -21,8 +20,6 @@ const page = () => {
         </div>
 
         <ComingSoon />
-
-        <BottomNav />
       </div>
     </PageLayout>
   );
