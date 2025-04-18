@@ -106,3 +106,5 @@ export {
   AccordionTrigger,
   AccordionContent,
 } from "./accordion";
+
+export { Spinner } from "./spinner";
