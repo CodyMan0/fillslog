@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 const KakaoLoginButton = () => {
   return (
     <button
-      className="w-[80%] h-14 rounded-lg bg-kakao px-[14px] text-black font-bold"
+      className="w-[90%] h-14 rounded-lg bg-kakao px-[14px] text-black font-bold cursor-pointer"
       onClick={() =>
         signIn("kakao", {
           callbackUrl: `${window.location.origin}/fills`,
