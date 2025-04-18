@@ -24,6 +24,7 @@ export default async function RootLayout({
       <body
         className={`${pretendard.variable} ${pretendard.variable} antialiased`}
         cz-shortcut="true"
+        cz-shortcut-listen="true"
       >
         <Provider session={session}>
           <MobileContainer>{children}</MobileContainer>
