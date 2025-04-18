@@ -9,7 +9,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/shared/auth";
 import { RouterWrapperProvider } from "./provider/RouterWrapperProvider";
 import AnimationProvider from "./provider/AnimationProvider";
-import BottomNav from "./components/MobileNav";
 
 export const metadata: Metadata = {
   title: "Fills Log",
@@ -34,7 +33,6 @@ export default async function RootLayout({
             <AnimationProvider>
               <MobileContainer>{children}</MobileContainer>
             </AnimationProvider>
-            <BottomNav />
           </RouterWrapperProvider>
         </Provider>
       </body>

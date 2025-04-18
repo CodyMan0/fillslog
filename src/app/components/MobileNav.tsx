@@ -1,8 +1,9 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Link from "next/link";
+
 import { UserIcon, DrumIcon, NetworkIcon } from "lucide-react";
+import ExtendedLink from "./ExtendedLink";
 
 const navItems = [
   { href: "/fills", label: "내 필인", icon: <DrumIcon size={20} /> },
@@ -19,7 +20,7 @@ export default function BottomNav() {
       {navItems.map((item) => {
         const isActive = pathname === item.href;
         return (
-          <Link
+          <ExtendedLink
             key={item.href}
             href={item.href}
             className={` flex-1 flex flex-col items-center gap-1 ${
@@ -28,7 +29,7 @@ export default function BottomNav() {
           >
             {item.icon}
             <span>{item.label}</span>
-          </Link>
+          </ExtendedLink>
         );
       })}
     </nav>

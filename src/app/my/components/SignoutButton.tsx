@@ -17,13 +17,10 @@ const SignoutButton = () => {
   const [open, setOpen] = useState(false);
   return (
     <Drawer open={open} onOpenChange={() => setOpen(!open)}>
-      <DrawerTrigger>
+      <DrawerTrigger asChild>
         <Button
           variant="outline"
           className="w-full hover:bg-accent-blue hover:border-black text-black font-semibold"
-          // onClick={() => {
-          //   signOut({ callbackUrl: "/" });
-          // }}
         >
           로그아웃
         </Button>

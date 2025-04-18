@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState, useCallback, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 import { useRouter } from "next/navigation";
 
 export type NavigationDirection = "forward" | "backward";
@@ -23,18 +23,15 @@ export function RouterWrapperProvider({
   const [direction, setDirection] = useState<NavigationDirection>("forward");
   const router = useRouter();
 
-  const push = useCallback(
-    (url: string) => {
-      setDirection("forward");
-      router.push(url);
-    },
-    [router]
-  );
+  const push = (url: string) => {
+    setDirection("forward");
+    router.push(url);
+  };
 
-  const back = useCallback(() => {
+  const back = () => {
     setDirection("backward");
     router.back();
-  }, [router]);
+  };
 
   return (
     <RouterWrapperContext.Provider value={{ direction, push, back }}>
