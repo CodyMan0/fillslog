@@ -6,25 +6,41 @@ import PageLayout from "@/features/layouts/PageLayout";
 
 import React from "react";
 
+const mock = [];
+
+// const emptyMock = [];
 const Page = () => {
   return (
     <PageLayout>
       <Header>
         <Header.Previous />
       </Header>
-      <div>
-        <FillCard
-          title="4연음 트릴"
-          bpm={140}
-          videoUrl="https://youtube.com"
-          description="느린 발라드에서 리드인용으로 사용"
-        />
-        <FillCard
-          title="4연음 트릴"
-          bpm={90}
-          videoUrl="https://youtube.com"
-          description="느린 발라드에서 리드인용으로 사용"
-        />
+
+      <div className="flex flex-col gap-2">
+        {mock.length === 0 ? (
+          <div className="flex flex-col items-center justify-center h-full">
+            <div className="text-2xl font-bold">아직 등록된 필인이 없어요</div>
+            <div className="text-sm text-text-secondary mt-2">
+              <span className="text-accent-blue font-bold">
+                금방 머리속에서 떠나가는 필인
+              </span>
+              을 저장해보세요!
+            </div>
+          </div>
+        ) : (
+          <>
+            {mock.map((fill) => (
+              <FillCard
+                key={fill.title}
+                title={fill.title}
+                bpm={fill.bpm}
+                videoUrl={fill.videoUrl}
+                description={fill.description}
+              />
+            ))}
+          </>
+        )}
+
         <FillFab />
         <BottomNav />
       </div>
