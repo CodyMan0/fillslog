@@ -15,7 +15,7 @@ const page = () => {
           <Header.Text text="My Page" />
         </Header>
 
-        <div className="flex flex-col  gap-4 mt-4">
+        <div className="flex flex-col gap-16 mt-4">
           <Profile />
           <SignoutButton />
         </div>
