@@ -7,6 +7,9 @@ import { pretendard } from "./fonts";
 import { Provider } from "./components/Provider";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/shared/auth";
+import { RouterWrapperProvider } from "./provider/RouterWrapperProvider";
+import AnimationProvider from "./provider/AnimationProvider";
+import BottomNav from "./components/MobileNav";
 
 export const metadata: Metadata = {
   title: "Fills Log",
@@ -27,7 +30,12 @@ export default async function RootLayout({
         cz-shortcut-listen="true"
       >
         <Provider session={session}>
-          <MobileContainer>{children}</MobileContainer>
+          <RouterWrapperProvider>
+            <AnimationProvider>
+              <MobileContainer>{children}</MobileContainer>
+            </AnimationProvider>
+            <BottomNav />
+          </RouterWrapperProvider>
         </Provider>
       </body>
     </html>

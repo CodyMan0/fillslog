@@ -1,10 +1,10 @@
 "use client";
 
+import { useRouterWrapper } from "@/app/provider/RouterWrapperProvider";
 import { ChevronLeft } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 const Previous = () => {
-  const router = useRouter();
+  const router = useRouterWrapper();
 
   return <ChevronLeft onClick={() => router.back()} />;
 };
