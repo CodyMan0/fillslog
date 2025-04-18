@@ -13,7 +13,11 @@ export async function middleware(req: NextRequest) {
 
   const pathname = req.nextUrl.pathname;
 
-  const isProtectedPage = pathname.startsWith("/fills");
+  const protectedPaths = ["/fills", "/my"];
+
+  const isProtectedPage = protectedPaths.some((path) =>
+    pathname.startsWith(path)
+  );
   const isLandingPage = pathname === "/";
 
   // 1. 로그인 안 한 사람이 /fills 접근하면 → /
@@ -28,5 +32,5 @@ export async function middleware(req: NextRequest) {
   return NextResponse.next(); // 통과
 }
 export const config = {
-  matcher: ["/", "/fills/:path*"],
+  matcher: ["/", "/fills/:path*", "/my"],
 };
