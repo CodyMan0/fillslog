@@ -1,14 +1,19 @@
 "use client";
 
-import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 const KakaoLoginButton = () => {
   return (
-    <Link href={"/fills"} className="w-[80%]">
-      <button className="w-full h-14 rounded-lg bg-kakao px-[14px] text-black font-bold">
-        카카오로 시작하기
-      </button>
-    </Link>
+    <button
+      className="w-[80%] h-14 rounded-lg bg-kakao px-[14px] text-black font-bold"
+      onClick={() =>
+        signIn("kakao", {
+          callbackUrl: `${window.location.origin}/fills`,
+        })
+      }
+    >
+      카카오로 시작하기
+    </button>
   );
 };
 

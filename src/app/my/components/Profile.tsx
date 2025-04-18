@@ -1,13 +1,25 @@
 "use client";
 
-import { User } from "lucide-react";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const Profile = () => {
-  //client session 가지고 오기
+  const session = useSession();
   return (
-    <section className="flex items-center gap-4xs p-2xs">
-      <User size={32} />
-      <p className="grow text-gray-600">유저 이름</p>
+    <section className="flex items-center justify-between gap-4xs p-2xs">
+      <Image
+        src={session.data?.user?.image || ""}
+        alt="img"
+        width={50}
+        height={50}
+        className="rounded-full"
+      />
+      <div className="flex flex-col items-end">
+        <p className="text-sm text-muted-foreground">
+          {session.data?.user?.email}
+        </p>
+        <p className="font-bold">{session.data?.user?.name}</p>
+      </div>
     </section>
   );
 };

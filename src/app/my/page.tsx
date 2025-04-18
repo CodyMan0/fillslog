@@ -4,6 +4,7 @@ import BottomNav from "../components/MobileNav";
 import Header from "@/features/layouts/Header";
 import Profile from "./components/Profile";
 import ComingSoon from "../components/ComingSoon";
+import SignoutButton from "./components/SignoutButton";
 
 const page = () => {
   return (
@@ -14,7 +15,10 @@ const page = () => {
           <Header.Text text="My Page" />
         </Header>
 
-        <Profile />
+        <div className="flex flex-col gap-16 mt-4">
+          <Profile />
+          <SignoutButton />
+        </div>
 
         <ComingSoon />
 
