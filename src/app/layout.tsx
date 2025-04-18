@@ -23,6 +23,7 @@ export default async function RootLayout({
     <html lang="kr">
       <body
         className={`${pretendard.variable} ${pretendard.variable} antialiased`}
+        cz-shortcut="true"
       >
         <Provider session={session}>
           <MobileContainer>{children}</MobileContainer>
