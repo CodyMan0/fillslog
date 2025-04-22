@@ -5,7 +5,14 @@ export async function GET() {
   const supabase = await createClient();
   console.log("supabase", supabase);
 
-  const { data, error } = await supabase.from("fills").select("*");
+  const { data, error } = await supabase.from("fills").select(`
+    id,
+    created_at,
+    title,
+    description,
+    url,
+    category:category_id ( id, name )
+  `);
 
   if (error) {
     // 401 Unauthorized: 인증 관련 에러 처리
