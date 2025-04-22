@@ -1,4 +1,3 @@
-import { CategoryCount } from "@/entites";
 import { createClient } from "@/shared/utils/supabase/server";
 import { NextResponse } from "next/server";
 
@@ -6,9 +5,13 @@ export async function GET() {
   const supabase = await createClient();
   console.log("supabase", supabase);
 
+  const { data: categories } = await supabase
+    .from("categories")
+    .select("id, name");
+
   const { data, error } = await supabase
     .from("fills")
-    .select("id, category_id, categories(name)");
+    .select("id, category_id");
 
   if (error) {
     // 401 Unauthorized: 인증 관련 에러 처리
@@ -33,24 +36,25 @@ export async function GET() {
     );
   }
 
-  const counts = data.reduce<Record<string, CategoryCount>>((acc, fill) => {
-    const catName = fill.categories?.name ?? "Uncategorized";
+  const countMap =
+    data.reduce<Record<string, number>>((acc, fill) => {
+      const catId = fill.category_id;
 
-    const key = catName ?? "null"; // 객체 키는 string이니까 null 처리
+      if (catId) {
+        acc[catId] = (acc[catId] ?? 0) + 1;
+      }
 
-    if (!acc[key]) {
-      acc[key] = {
-        count: 1,
-      };
-    } else {
-      acc[key].count += 1;
-    }
+      return acc;
+    }, {}) ?? {};
 
-    return acc;
-  }, {});
+  const result = categories?.map((cat) => ({
+    category_id: cat.id,
+    category_name: cat.name,
+    count: countMap[cat.id] ?? 0,
+  }));
 
   return NextResponse.json(
-    { message: "success fetching", data: counts },
+    { message: "success fetching", data: result },
     {
       status: 200,
     }
