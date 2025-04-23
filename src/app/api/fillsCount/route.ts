@@ -28,13 +28,6 @@ export async function GET() {
     );
   }
 
-  if (!data || data.length === 0) {
-    return NextResponse.json(
-      { message: "No data found", data: [] },
-      { status: 200 }
-    );
-  }
-
   const countMap =
     data.reduce<Record<string, number>>((acc, fill) => {
       const catId = fill.category_id;
