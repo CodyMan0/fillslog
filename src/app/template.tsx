@@ -12,7 +12,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { direction } = useRouterWrapper();
   const isRoot = pathname === "/";
-  console.log("direction ", direction);
 
   return (
     <div className="relative mx-auto max-w-[430px] w-full overflow-hidden">

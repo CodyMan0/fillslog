@@ -62,6 +62,7 @@ export default async function Home() {
   });
 
   const fillCounts = await response.json();
+
   return (
     <PageLayout>
       <Header>
@@ -74,7 +75,7 @@ export default async function Home() {
             return (
               <Link
                 key={item.category_id}
-                href={`/fills/${item.category_name}`}
+                href={`/fills/${item.category_id}`}
                 className={`aspect-square flex flex-col items-center justify-center rounded-lg text-white text-lg font-semibold shadow-md ${
                   categoryMeta[item.category_name].color
                 } hover:opacity-90 transition relative`}

@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   const supabase = await createClient();
-  console.log("supabase", supabase);
 
   const { data: categories } = await supabase
     .from("categories")

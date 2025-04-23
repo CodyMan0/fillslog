@@ -1,6 +1,6 @@
 interface FillCardProps {
   title: string;
-  bpm: number;
+  bpm?: number;
   videoUrl?: string;
   description?: string;
 }

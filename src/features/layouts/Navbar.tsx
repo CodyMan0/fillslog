@@ -9,7 +9,6 @@ import Drum from "@/shared/assets/images/drum.png";
 
 const Navbar = () => {
   const { data: session } = useSession();
-  console.log("session ", session);
 
   return (
     <div className="flex justify-between items-center">
