@@ -2,10 +2,19 @@ import Header from "@/features/layouts/Header";
 
 import PageLayout from "@/features/layouts/PageLayout";
 
-import { FlaskConical, LucideIcon, Music, Rocket, Zap } from "lucide-react";
+import {
+  FlaskConical,
+  LucideIcon,
+  Music,
+  Plus,
+  Rocket,
+  Zap,
+} from "lucide-react";
 import Link from "next/link";
-import { fillsApi } from "../api/fillsCount/api";
-import FillFab from "@/features/fills/FloatingFillButton";
+
+import { fillsApi } from "../api/fills/api";
+import FloatingMotionButton from "@/features/fills/FloatingMotionButton";
+import { Button } from "@/shared/ui";
 
 const categoryMeta: Record<
   string,
@@ -80,7 +89,17 @@ export default async function Home() {
               </Link>
             );
           })}
-          <FillFab />
+          <FloatingMotionButton>
+            <Button
+              className="rounded-full px-4 py-2 shadow-md bg-white text-black hover:scale-105 transition-all duration-200 ease-in-out hover:bg-white/80"
+              asChild
+            >
+              <Link href="/fills/add">
+                <Plus className="mr-2 h-4 w-4" />
+                필인 줍줍
+              </Link>
+            </Button>
+          </FloatingMotionButton>
         </div>
       </div>
     </PageLayout>
