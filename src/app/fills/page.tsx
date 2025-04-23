@@ -63,6 +63,7 @@ const categoryMeta: Record<
 
 export default async function Home() {
   const fillCounts = await fillsApi.getFillsCount();
+  console.log("fillCounts", fillCounts);
 
   return (
     <PageLayout>

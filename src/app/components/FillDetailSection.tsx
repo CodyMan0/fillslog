@@ -7,6 +7,8 @@ import { ExternalLink } from "lucide-react";
 import UpdateDrawerButton from "../fills/components/UpdateDrawerButton";
 import DeleteDrawerbutton from "../fills/components/DeleteDrawerButton";
 import ComingSoon from "./ComingSoon";
+import { useRouter } from "next/navigation";
+import { fillsApi } from "../api/fills/api";
 
 interface FillDetailProps {
   id: number;
@@ -18,11 +20,22 @@ interface FillDetailProps {
 }
 
 export function FillDetail({
+  id,
   title,
   description,
   createdAt,
   videoUrl,
 }: FillDetailProps) {
+  const router = useRouter();
+  const fill_id = id;
+
+  const handleDelete = async () => {
+    const response = await fillsApi.deleteFillById({ id: String(fill_id) });
+    console.log("response", response);
+    if (response.ok) {
+      router.push("/fills");
+    }
+  };
   return (
     <div className="p-4 space-y-4">
       {/* 헤더 */}
@@ -54,7 +67,7 @@ export function FillDetail({
 
       <ComingSoon />
       <FloatingMotionButton>
-        <DeleteDrawerbutton />
+        <DeleteDrawerbutton onDelete={handleDelete} />
       </FloatingMotionButton>
       <FloatingMotionButton className="bottom-40">
         <UpdateDrawerButton />

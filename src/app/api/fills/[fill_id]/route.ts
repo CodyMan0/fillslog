@@ -45,3 +45,32 @@ export async function GET(
     { status: 200 }
   );
 }
+
+export async function DELETE(request: NextRequest) {
+  const supabase = await createClient();
+
+  const url = new URL(request.url);
+  const fillId = url.pathname.split("/").pop(); // "/api/fills/123" → "123"
+
+  if (!fillId) {
+    return NextResponse.json({ error: "fill_id is required" }, { status: 400 });
+  }
+
+  const { error } = await supabase
+    .from("fills")
+    .delete()
+    .eq("id", Number(fillId));
+
+  if (error) {
+    console.error("Error deleting data:", error);
+    return NextResponse.json(
+      { error: "Failed to delete fill", details: error.message },
+      { status: 500 }
+    );
+  }
+
+  return NextResponse.json(
+    { message: "Fill deleted successfully" },
+    { status: 200 }
+  );
+}

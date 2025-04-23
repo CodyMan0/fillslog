@@ -13,8 +13,9 @@ import { TrashSimple } from "@phosphor-icons/react";
 
 import React, { useState } from "react";
 
-const DeleteDrawerButton = () => {
+const DeleteDrawerButton = ({ onDelete }: { onDelete: VoidFunction }) => {
   const [open, setOpen] = useState(false);
+
   return (
     <Drawer open={open} onOpenChange={() => setOpen(!open)}>
       <DrawerTrigger asChild>
@@ -29,9 +30,27 @@ const DeleteDrawerButton = () => {
       </DrawerTrigger>
       <DrawerContent className="w-full max-w-[430px] mx-auto">
         <DrawerHeader>
-          <DrawerTitle>기능 준비중</DrawerTitle>
-          <DrawerDescription>기능을 준비중이에요!</DrawerDescription>
+          <DrawerTitle>정말 삭제하시겠어요?</DrawerTitle>
+          <DrawerDescription>삭제하면 복구할 수 없어요.</DrawerDescription>
         </DrawerHeader>
+        <div className="flex gap-4 p-4 w-full">
+          <Button
+            className="w-full bg-destructive text-white hover:bg-destructive/70 font-semibold"
+            onClick={() => {
+              onDelete();
+              setOpen(false);
+            }}
+          >
+            확인
+          </Button>
+          <Button
+            className="w-full"
+            variant="outline"
+            onClick={() => setOpen(false)}
+          >
+            취소
+          </Button>
+        </div>
       </DrawerContent>
     </Drawer>
   );

@@ -26,7 +26,19 @@ const getFillById = async ({ id }: { id: string }): Promise<Fill> => {
   return result.data;
 };
 
+const deleteFillById = async ({ id }: { id: string }) => {
+  const response = await fetch(`http://localhost:3000/api/fills/${id}`, {
+    method: "DELETE",
+  });
+  if (!response.ok) {
+    const err = await response.json();
+    throw new Error(err.error);
+  }
+  return response;
+};
+
 export const fillsApi = {
   getFillsCount,
   getFillById,
+  deleteFillById,
 };
