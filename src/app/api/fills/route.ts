@@ -8,14 +8,19 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const categoryId = searchParams.get("categoryId");
 
-  let query = supabase.from("fills").select(`
+  let query = supabase
+    .from("fills")
+    .select(
+      `
     id,
     created_at,
     title,
     description,
     url,
     category:category_id ( id, name )
-  `);
+  `
+    )
+    .order("created_at", { ascending: false }); // ✅ 최신순 정렬 추가;
 
   // categoryName가 있으면 필터링 없으면 원본 반환
   if (categoryId) {

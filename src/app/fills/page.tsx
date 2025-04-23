@@ -5,6 +5,7 @@ import PageLayout from "@/features/layouts/PageLayout";
 import { FlaskConical, LucideIcon, Music, Rocket, Zap } from "lucide-react";
 import Link from "next/link";
 import { fillsApi } from "../api/fillsCount/api";
+import FillFab from "@/features/fills/FloatingFillButton";
 
 const categoryMeta: Record<
   string,
@@ -79,6 +80,7 @@ export default async function Home() {
               </Link>
             );
           })}
+          <FillFab />
         </div>
       </div>
     </PageLayout>
