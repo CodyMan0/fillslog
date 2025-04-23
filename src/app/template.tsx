@@ -2,60 +2,50 @@
 
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import {
-  NavigationDirection,
-  useRouterWrapper,
-} from "./provider/RouterWrapperProvider";
 import BottomNav from "./components/MobileNav";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const { direction } = useRouterWrapper();
   const isRoot = pathname === "/";
-
   return (
     <div className="relative mx-auto max-w-[430px] w-full overflow-hidden">
       <motion.div
         key={pathname}
-        custom={direction}
-        variants={{
-          enter: (direction: NavigationDirection) => ({
-            x: direction === "forward" ? "100%" : "-100%",
-          }),
-          center: {
-            x: 0,
-          },
-        }}
-        initial={"enter"}
-        animate={"center"}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
+        variants={variants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
       >
         {children}
       </motion.div>
 
       {!isRoot && <BottomNav />}
-
-      <motion.div
-        key={"prev cache page"}
-        custom={direction}
-        variants={{
-          center: {
-            x: 0,
-          },
-          exit: (direction: NavigationDirection) => ({
-            x: direction === "forward" ? "-100%" : "100%",
-          }),
-        }}
-        initial={"center"}
-        animate={"exit"}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        style={{
-          position: "absolute",
-          width: "100%",
-        }}
-      >
-        {"caching page"}
-      </motion.div>
     </div>
   );
 }
+
+const variants = {
+  initial: {
+    opacity: 0,
+    scale: 0.98,
+    y: 2,
+  },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.25,
+      ease: "easeOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.97,
+    y: 10,
+    transition: {
+      duration: 0.2,
+      ease: "easeIn",
+    },
+  },
+};
