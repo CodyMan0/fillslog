@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import { ExternalLink } from "lucide-react";
 import UpdateDrawerButton from "../fills/components/UpdateDrawerButton";
 import DeleteDrawerbutton from "../fills/components/DeleteDrawerButton";
+import ComingSoon from "./ComingSoon";
 
 interface FillDetailProps {
   id: number;
@@ -50,6 +51,8 @@ export function FillDetail({
         </a>
       )}
       {/* 버튼들 */}
+
+      <ComingSoon />
       <FloatingMotionButton>
         <DeleteDrawerbutton />
       </FloatingMotionButton>
