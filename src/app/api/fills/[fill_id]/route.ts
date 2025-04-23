@@ -1,15 +1,13 @@
 import { createClient } from "@/shared/utils/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { fill_id: string } }
-) {
+export async function GET(request: NextRequest) {
   const supabase = await createClient();
 
-  const { fill_id } = params;
+  const url = new URL(request.url);
+  const fillId = url.pathname.split("/").pop(); // "/api/fills/123" → "123"
 
-  if (!fill_id) {
+  if (!fillId) {
     return NextResponse.json({ error: "fill_id is required" }, { status: 400 });
   }
 
@@ -25,7 +23,7 @@ export async function GET(
     category:category_id ( id, name )
   `
     )
-    .eq("id", Number(fill_id))
+    .eq("id", Number(fillId))
     .single(); // 단일 데이터만 가져오기
 
   if (error) {
