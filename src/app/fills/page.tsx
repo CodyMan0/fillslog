@@ -4,6 +4,7 @@ import PageLayout from "@/features/layouts/PageLayout";
 
 import { FlaskConical, LucideIcon, Music, Rocket, Zap } from "lucide-react";
 import Link from "next/link";
+import { fillsApi } from "../api/fillsCount/api";
 
 const categoryMeta: Record<
   string,
@@ -50,18 +51,8 @@ const categoryMeta: Record<
   },
 };
 
-type Test = {
-  category_id: number;
-  category_name: string;
-  count: number;
-};
 export default async function Home() {
-  const response = await fetch("http://localhost:3000/api/fillsCount", {
-    method: "GET",
-    cache: "no-store",
-  });
-
-  const fillCounts = await response.json();
+  const fillCounts = await fillsApi.getFillsCount();
 
   return (
     <PageLayout>
@@ -70,7 +61,7 @@ export default async function Home() {
       </Header>
       <div>
         <div className="grid grid-cols-2 gap-4 p-4 max-w-[430px] mx-auto">
-          {fillCounts.data.map((item: Test) => {
+          {fillCounts.map((item) => {
             const Icon = categoryMeta[item.category_name].icon;
             return (
               <Link

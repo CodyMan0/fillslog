@@ -5,14 +5,13 @@ import { type VariantProps, cva } from "class-variance-authority";
 import * as React from "react";
 
 import { cn } from "../lib/tailwind-css";
-import { Spinner } from "./spinner";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-accent-blue text-black hover:bg-accent-blue/90",
         auth: "bg-secondary text-secondary-foreground hover:bg-secondary/90",
         authLink: "text-secondary underline-offset-4 hover:underline",
         destructive:
@@ -42,21 +41,17 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
-  isLoading?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, isLoading, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
-      >
-        {isLoading && <Spinner />}
-        {props.children}
-      </Comp>
+      />
     );
   }
 );

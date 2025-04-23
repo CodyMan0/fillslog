@@ -4,10 +4,7 @@ export type Fill = {
   title: string;
   description: string;
   url: string;
-  category: {
-    id: number;
-    name: string;
-  };
+  category: Category;
   tag: string | null;
 };
 
@@ -18,4 +15,13 @@ export type CategoryCount = {
 export type Category = {
   id: number;
   name: string;
+};
+
+export type FillPostDto = {
+  created_at: string;
+  title: string;
+  description: string;
+  url: string;
+  category: string;
+  tag: string | null;
 };

@@ -2,12 +2,11 @@
 
 import { Plus } from "lucide-react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
+
 import { Button } from "@/shared/ui";
+import Link from "next/link";
 
 const FillFab = () => {
-  const router = useRouter();
-
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.6 }}
@@ -16,11 +15,13 @@ const FillFab = () => {
       className="absolute bottom-20 right-4 z-50"
     >
       <Button
-        onClick={() => router.push("/fills/add")}
         className="rounded-full px-4 py-2 shadow-md bg-white text-black hover:scale-105 transition-all duration-200 ease-in-out hover:bg-white/80"
+        asChild
       >
-        <Plus className="mr-2 h-4 w-4" />
-        필인 줍줍
+        <Link href="/fills/add">
+          <Plus className="mr-2 h-4 w-4" />
+          필인 줍줍
+        </Link>
       </Button>
     </motion.div>
   );
