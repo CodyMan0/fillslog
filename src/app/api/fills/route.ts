@@ -54,3 +54,39 @@ export async function GET(request: NextRequest) {
     }
   );
 }
+
+export async function POST(request: NextRequest) {
+  const supabase = await createClient();
+
+  try {
+    // 요청 본문에서 데이터 가져오기
+    const body = await request.json();
+    console.log("body", body);
+
+    // Supabase에 데이터 삽입
+    const { data, error } = await supabase.from("fills").insert([
+      {
+        title: body.title,
+        url: body.url,
+        description: body.description,
+        category_id: body.category,
+      },
+    ]);
+
+    if (error) {
+      console.error("Error inserting data:", error);
+      return NextResponse.json(
+        { error: "Failed to insert data", details: error.message },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json(
+      { message: "Data inserted successfully", data },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error("Error processing request:", error);
+    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+  }
+}

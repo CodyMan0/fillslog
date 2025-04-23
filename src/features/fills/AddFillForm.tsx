@@ -39,8 +39,17 @@ const AddFillForm = ({ category }: { category: FillsCount[] }) => {
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FillPostDto> = async (data) => {
-    console.log(data);
-    // router.back();
+    const res = await fetch("/api/fills", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) {
+      const err = await res.json();
+      console.error("Error:", err);
+      return;
+    }
+    router.push("/fills");
   };
 
   return (
