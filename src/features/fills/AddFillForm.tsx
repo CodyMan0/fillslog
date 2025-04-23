@@ -22,7 +22,7 @@ import {
 import { useRouter } from "next/navigation";
 
 import { FillPostDto } from "@/entites/fills/model";
-import { FillsCount } from "@/app/api/fillsCount/api";
+import { FillsCount } from "@/app/api/fills/api";
 
 const AddFillForm = ({ category }: { category: FillsCount[] }) => {
   const form = useForm<FillPostDto>({
