@@ -26,7 +26,7 @@ export default async function Home({
     }
   );
 
-  const fillCounts = await response.json();
+  const fills = await response.json();
 
   return (
     <PageLayout>
@@ -35,15 +35,15 @@ export default async function Home({
       </Header>
 
       <div className="flex flex-col gap-2">
-        {fillCounts.data.length > 0 ? (
+        {fills.data.length > 0 ? (
           // 데이터가 있을 경우 FillCard 렌더링
-          fillCounts.data.map((fill: Fill) => (
+          fills.data.map((fill: Fill) => (
             <FillCard
               key={fill.title}
               title={fill.title}
-              // bpm={fill.bpm}
               videoUrl={fill.url}
               description={fill.description}
+              createdAt={fill.created_at}
             />
           ))
         ) : (
@@ -51,7 +51,6 @@ export default async function Home({
           <EmptyFillsPage />
         )}
 
-        <FillFab />
         <BottomNav />
       </div>
     </PageLayout>

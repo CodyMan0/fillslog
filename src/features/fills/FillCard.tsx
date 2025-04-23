@@ -1,26 +1,41 @@
 interface FillCardProps {
   title: string;
-  bpm?: number;
-  videoUrl?: string;
   description?: string;
+  videoUrl?: string;
+  createdAt: string; // ISO string or Date
 }
+import { CalendarDays, PlayCircle } from "lucide-react";
+import dayjs from "dayjs";
+import { DATE_FORMAT_DD_MM_YYYY_HH_mm } from "@/shared/lib/date";
 
-export function FillCard({ title, bpm, videoUrl, description }: FillCardProps) {
+export function FillCard({
+  title,
+  videoUrl,
+  description,
+  createdAt,
+}: FillCardProps) {
+  const formatted = dayjs(createdAt).format(DATE_FORMAT_DD_MM_YYYY_HH_mm);
   return (
-    <div className="bg--card rounded-xl p-4 shadow-md">
-      <h2 className="text-lg font-semibold">{title}</h2>
-      <p className="text-sm text-accent-blue font-medium mt-1">BPM: {bpm}</p>
-      {description && (
-        <p className="mt-2 text-sm text-text-secondary">{description}</p>
-      )}
+    <div className="rounded-xl bg-zinc-800 hover:bg-accent-blue p-4 shadow-md border border-zinc-800 hover:border-zinc-700 transition-all hover:text-black">
+      <div className="flex items-center justify-between">
+        <h2 className="text-base font-semibold ">{title}</h2>
+        <div className="flex items-center gap-1 text-xs">
+          <CalendarDays className="w-4 h-4" />
+          {formatted}
+        </div>
+      </div>
+
+      {description && <p className="mt-2 text-sm">{description}</p>}
+
       {videoUrl && (
         <a
           href={videoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-accent-blue text-sm underline mt-3 inline-block hover:shadow-glow transition-shadow"
+          className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-400 hover:text-blue-800 transition"
         >
-          🎥 영상 보기
+          <PlayCircle className="w-4 h-4" />
+          영상 보기
         </a>
       )}
     </div>
