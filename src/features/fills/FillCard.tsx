@@ -3,16 +3,22 @@ interface FillCardProps {
   description?: string;
   videoUrl?: string;
   createdAt: string; // ISO string or Date
+  id: number;
+  categoryId?: number;
 }
-import { CalendarDays, PlayCircle } from "lucide-react";
+import { ArrowRight, CalendarDays, PlayCircle } from "lucide-react";
 import dayjs from "dayjs";
 import { DATE_FORMAT_DD_MM_YYYY_HH_mm } from "@/shared/lib/date";
+import Link from "next/link";
+import { Button } from "@/shared/ui";
 
 export function FillCard({
   title,
   videoUrl,
+  id,
   description,
   createdAt,
+  categoryId,
 }: FillCardProps) {
   const formatted = dayjs(createdAt).format(DATE_FORMAT_DD_MM_YYYY_HH_mm);
   return (
@@ -27,17 +33,29 @@ export function FillCard({
 
       {description && <p className="mt-2 text-sm">{description}</p>}
 
-      {videoUrl && (
-        <a
-          href={videoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-400 hover:text-blue-800 transition"
+      <div className="flex justify-between items-center gap-2 mt-4 ">
+        {videoUrl && (
+          <a
+            href={videoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-sm font-medium text-blue-400 hover:text-blue-800 transition"
+          >
+            <PlayCircle className="w-4 h-4" />
+            영상 보기
+          </a>
+        )}
+        <Button
+          variant="link"
+          className="text-sm font-medium text-blue-400 hover:text-blue-800 transition !px-0"
+          asChild
         >
-          <PlayCircle className="w-4 h-4" />
-          영상 보기
-        </a>
-      )}
+          <Link href={`${categoryId}/${id}`} className="text-sm">
+            상세 페이지로 이동
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 }

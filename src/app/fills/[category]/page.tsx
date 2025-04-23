@@ -2,7 +2,6 @@ import EmptyFillsPage from "@/app/components/EmptyFillsPage";
 import BottomNav from "@/app/components/MobileNav";
 import { Fill } from "@/entites";
 import { FillCard } from "@/features/fills";
-import FillFab from "@/features/fills/FloatingFillButton";
 
 import Header from "@/features/layouts/Header";
 import PageLayout from "@/features/layouts/PageLayout";
@@ -39,11 +38,13 @@ export default async function Home({
           // 데이터가 있을 경우 FillCard 렌더링
           fills.data.map((fill: Fill) => (
             <FillCard
-              key={fill.title}
+              key={fill.id}
+              id={fill.id}
               title={fill.title}
               videoUrl={fill.url}
               description={fill.description}
               createdAt={fill.created_at}
+              categoryId={fill.category.id}
             />
           ))
         ) : (
